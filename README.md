@@ -126,9 +126,9 @@ SQLite stores equipment, sensor readings, model predictions, maintenance alerts,
 
 ## Deployment
 
-For a portfolio demo, push the repository to GitHub and deploy `app.py` from Streamlit Community Cloud. Keep `requirements.txt` at the repository root and `.streamlit/config.toml` at the root. Streamlit Community Cloud currently defaults to Python 3.12; select Python 3.13 in Advanced settings if you want to match this workspace. [Streamlit deployment instructions](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy)
+The public repository is [divyansh5154/predictive-maintenance-equipment-failure-forecasting](https://github.com/divyansh5154/predictive-maintenance-equipment-failure-forecasting). To publish the live dashboard, sign in to [Streamlit Community Cloud](https://share.streamlit.io/), choose **Create app**, and select this repository, branch `main`, and entrypoint `app.py`. The app's dependencies and dark theme are configured at the repository root. See [the deployment guide](docs/deployment.md) for the exact steps.
 
-Community Cloud does not guarantee persistence for local files, so its local SQLite database may be deleted. Use SQLite for local development and demonstration; connect a managed database for durable hosted records. [Streamlit data persistence note](https://docs.streamlit.io/develop/concepts/connections/connecting-to-data)
+Community Cloud does not guarantee persistence for local files, so its local SQLite database may be deleted. This is suitable for a portfolio demo with disposable records. Connect a managed database for durable hosted records. [Streamlit data persistence note](https://docs.streamlit.io/develop/concepts/connections/connecting-to-data)
 
 Detailed steps are in [docs/deployment.md](docs/deployment.md).
 

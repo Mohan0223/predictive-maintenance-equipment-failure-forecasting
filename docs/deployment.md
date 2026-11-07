@@ -1,31 +1,28 @@
 # GitHub and Streamlit Community Cloud deployment
 
-## Prepare the repository
+## GitHub repository
 
-Review the files before publishing. `.venv/`, SQLite database files, and generated processed data are ignored by Git. The source CSV is small and licensed CC BY 4.0; keep the attribution in `data/README.md`. Model pipelines and reports are included because they are project deliverables.
+The public project repository is [divyansh5154/predictive-maintenance-equipment-failure-forecasting](https://github.com/divyansh5154/predictive-maintenance-equipment-failure-forecasting), on branch `main`. The project files, model artifacts, sample dataset, screenshots, and reports are included. `.venv/`, SQLite database files, and generated processed data are excluded by `.gitignore`. The source dataset is licensed CC BY 4.0; its attribution is in `data/README.md`.
 
-From the project root, initialize Git if needed, review the staged files, and push to a GitHub repository:
+For later code updates, from the project root run:
 
-1. Run `git status` and confirm `.venv/` and `data/predictive_maintenance.db` are not listed.
-2. If this folder is not already a Git repository, run `git init`.
-3. Run `git add .` and `git status` to review the staged files.
-4. Run `git commit -m "Build predictive maintenance forecasting project"`.
-5. Create an empty GitHub repository in your account.
-6. Add its URL with `git remote add origin https://github.com/<username>/<repository>.git`.
-7. Run `git branch -M main` and `git push -u origin main`.
-
-If `origin` already exists, inspect it with `git remote -v` rather than adding a duplicate.
+```powershell
+git status
+git add .
+git commit -m "Describe the change"
+git push
+```
 
 ## Deploy on Streamlit Community Cloud
 
-1. Push the completed project to GitHub.
-2. Open Streamlit Community Cloud and choose **Create app**.
-3. Select the GitHub repository and `main` branch.
-4. Set the app entrypoint to `app.py`.
-5. In Advanced settings, select Python 3.13 to match the local environment. Community Cloud currently defaults to Python 3.12; the project supports Python 3.12 or newer.
-6. Deploy and review the app logs if the build reports an error.
+1. Open [Streamlit Community Cloud](https://share.streamlit.io/) and sign in with the GitHub account that has admin access to this repository.
+2. Choose **Create app**, then **Yup, I have an app**.
+3. Select repository `divyansh5154/predictive-maintenance-equipment-failure-forecasting`, branch `main`, and main file path `app.py`.
+4. Optionally choose a custom app subdomain.
+5. In Advanced settings, select Python 3.13 to match the local environment.
+6. Choose **Deploy**. Community Cloud displays the shareable `*.streamlit.app` URL after the build succeeds.
 
-The root `requirements.txt` declares Python dependencies, and `.streamlit/config.toml` supplies the dark theme. Streamlit runs the app from the repository root, and its docs support entrypoint files in subdirectories when configuration remains at the root. [Streamlit file organization](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/file-organization), [dependency configuration](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies)
+The root `requirements.txt` declares Python dependencies, and `.streamlit/config.toml` supplies the dark theme. No Streamlit secrets are required for this demo. Streamlit reads the root configuration and runs the entrypoint from the repository root. See [Streamlit's deployment guide](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy), [file organization](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/file-organization), and [dependency configuration](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies).
 
 ## Database persistence
 
